@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\tomdw\\Desktop\\Networking\\Tutorial\\GameServer\\GameServer\\GameServer.csproj": {}
+    "C:\\Users\\risin\\OneDrive\\Documents\\GitHub\\tcp-udp-networking\\GameServer\\GameServer\\GameServer.csproj": {}
   },
   "projects": {
-    "D:\\tomdw\\Desktop\\Networking\\Tutorial\\GameServer\\GameServer\\GameServer.csproj": {
+    "C:\\Users\\risin\\OneDrive\\Documents\\GitHub\\tcp-udp-networking\\GameServer\\GameServer\\GameServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\tomdw\\Desktop\\Networking\\Tutorial\\GameServer\\GameServer\\GameServer.csproj",
+        "projectUniqueName": "C:\\Users\\risin\\OneDrive\\Documents\\GitHub\\tcp-udp-networking\\GameServer\\GameServer\\GameServer.csproj",
         "projectName": "GameServer",
-        "projectPath": "D:\\tomdw\\Desktop\\Networking\\Tutorial\\GameServer\\GameServer\\GameServer.csproj",
-        "packagesPath": "C:\\Users\\tomdw\\.nuget\\packages\\",
-        "outputPath": "D:\\tomdw\\Desktop\\Networking\\Tutorial\\GameServer\\GameServer\\obj\\",
+        "projectPath": "C:\\Users\\risin\\OneDrive\\Documents\\GitHub\\tcp-udp-networking\\GameServer\\GameServer\\GameServer.csproj",
+        "packagesPath": "C:\\Users\\risin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\risin\\OneDrive\\Documents\\GitHub\\tcp-udp-networking\\GameServer\\GameServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tomdw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\risin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -53,12 +53,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.0.3, 3.0.3]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

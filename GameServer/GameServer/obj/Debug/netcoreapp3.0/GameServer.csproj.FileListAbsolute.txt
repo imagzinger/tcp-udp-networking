@@ -9,3 +9,16 @@ D:\tomdw\Desktop\Networking\Tutorial\GameServer\GameServer\obj\Debug\netcoreapp3
 D:\tomdw\Desktop\Networking\Tutorial\GameServer\GameServer\obj\Debug\netcoreapp3.0\GameServer.AssemblyInfo.cs
 D:\tomdw\Desktop\Networking\Tutorial\GameServer\GameServer\obj\Debug\netcoreapp3.0\GameServer.dll
 D:\tomdw\Desktop\Networking\Tutorial\GameServer\GameServer\obj\Debug\netcoreapp3.0\GameServer.pdb
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\bin\Debug\netcoreapp3.0\GameServer.exe
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\bin\Debug\netcoreapp3.0\GameServer.deps.json
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\bin\Debug\netcoreapp3.0\GameServer.runtimeconfig.json
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\bin\Debug\netcoreapp3.0\GameServer.runtimeconfig.dev.json
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\bin\Debug\netcoreapp3.0\GameServer.dll
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\bin\Debug\netcoreapp3.0\GameServer.pdb
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\obj\Debug\netcoreapp3.0\GameServer.csprojAssemblyReference.cache
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\obj\Debug\netcoreapp3.0\GameServer.AssemblyInfoInputs.cache
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\obj\Debug\netcoreapp3.0\GameServer.AssemblyInfo.cs
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\obj\Debug\netcoreapp3.0\GameServer.csproj.CoreCompileInputs.cache
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\obj\Debug\netcoreapp3.0\GameServer.dll
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\obj\Debug\netcoreapp3.0\GameServer.pdb
+C:\Users\risin\OneDrive\Documents\GitHub\tcp-udp-networking\GameServer\GameServer\obj\Debug\netcoreapp3.0\GameServer.genruntimeconfig.cache
