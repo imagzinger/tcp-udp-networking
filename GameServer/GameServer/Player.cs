@@ -97,18 +97,19 @@ namespace GameServer
         /// <param name="_inputDirection"></param>
         private void Move(float _inputDirection, float _inputAngle)
         {
-            rotation *= Quaternion.CreateFromAxisAngle(Vector3.UnitY, _inputAngle);
+            
             Vector3 _forward = Vector3.Transform(new Vector3(0, 0, 1), rotation);
             Vector3 _right = Vector3.Normalize(Vector3.Cross(_forward, new Vector3(0, 1, 0)));
 
             Vector3 _moveDirection = _forward * _inputDirection;
          
             position += _moveDirection * moveSpeed;
+            rotation *= Quaternion.CreateFromAxisAngle(Vector3.UnitY, _inputAngle);
             // I will need something like this line in order to allow the A and D keys to TURN the car
             ///rotation += rotationAmount * rotation speed?
             //quaternions are strange so look up how this works...need new Quaternion each time?
             //float angle = rotateSpeed * Time.deltaTime;
-            
+
 
             ServerSend.PlayerPosition(this);
             ServerSend.PlayerRotation(this);
