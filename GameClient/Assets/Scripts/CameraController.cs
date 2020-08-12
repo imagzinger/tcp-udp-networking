@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public PlayerManager player;
-    public float sensitivity = 100f;
+    public float sensitivity = 10000f;
     public float clampAngle = 85f;
 
     private float verticalRotation;
@@ -13,8 +13,9 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        verticalRotation = transform.localEulerAngles.x;
-        horizontalRotation = player.transform.eulerAngles.y;
+        //verticalRotation = transform.localEulerAngles.x;
+        //horizontalRotation = player.transform.eulerAngles.y;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -33,16 +34,16 @@ public class CameraController : MonoBehaviour
 
     private void Look()
     {
-        float _mouseVertical = -Input.GetAxis("Mouse Y");
-        float _mouseHorizontal = Input.GetAxis("Mouse X");
+        //float _mouseVertical = -Input.GetAxis("Mouse Y");
+        //float _mouseHorizontal = Input.GetAxis("Mouse X");
 
-        verticalRotation += _mouseVertical * sensitivity * Time.deltaTime;
-        horizontalRotation += _mouseHorizontal * sensitivity * Time.deltaTime;
+        //verticalRotation += _mouseVertical * sensitivity * Time.deltaTime;
+        //horizontalRotation += _mouseHorizontal * sensitivity * Time.deltaTime;s
 
-        verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
+        //verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
 
-        transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-        player.transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);
+        //stransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);//rotate vertical this way to only move camera
+        //player.transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);//this will rotate the entire player
     }
 
     private void ToggleCursorMode()

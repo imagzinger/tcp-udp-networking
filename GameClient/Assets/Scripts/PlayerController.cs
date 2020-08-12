@@ -30,10 +30,11 @@ public class PlayerController : MonoBehaviour
         bool[] _inputs = new bool[]
         {
             Input.GetKey(KeyCode.W),
-            Input.GetKey(KeyCode.S),
             Input.GetKey(KeyCode.A),
+            Input.GetKey(KeyCode.S),
             Input.GetKey(KeyCode.D),
-            Input.GetKey(KeyCode.Space)
+            Input.GetKey(KeyCode.Space),
+            Input.GetKey(KeyCode.Mouse0)
         };
 
         ClientSend.PlayerMovement(_inputs);
