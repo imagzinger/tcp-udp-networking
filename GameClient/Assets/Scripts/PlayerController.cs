@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Transform camTransform;
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -17,6 +16,7 @@ public class PlayerController : MonoBehaviour
         {
             ClientSend.PlayerThrowItem(camTransform.forward);
         }
+       
     }
 
     private void FixedUpdate()

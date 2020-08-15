@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         //verticalRotation = transform.localEulerAngles.x;
-        //horizontalRotation = player.transform.eulerAngles.y;
+       // horizontalRotation = player.transform.eulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -27,6 +27,7 @@ public class CameraController : MonoBehaviour
 
         if (Cursor.lockState == CursorLockMode.Locked)
         {
+            
             Look();
         }
         Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
@@ -34,17 +35,26 @@ public class CameraController : MonoBehaviour
 
     private void Look()
     {
-        //float _mouseVertical = -Input.GetAxis("Mouse Y");
-        //float _mouseHorizontal = Input.GetAxis("Mouse X");
+		float _mouseVertical = -Input.GetAxis("Mouse Y");
+		float _mouseHorizontal = Input.GetAxis("Mouse X");
 
-        //verticalRotation += _mouseVertical * sensitivity * Time.deltaTime;
-        //horizontalRotation += _mouseHorizontal * sensitivity * Time.deltaTime;s
+		verticalRotation += _mouseVertical * sensitivity * Time.deltaTime;
+		//horizontalRotation += _mouseHorizontal * sensitivity * Time.deltaTime;
+        
+        if (Input.GetKey(KeyCode.A))
+        {
+            horizontalRotation -= 1f;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            horizontalRotation += 1f;
+        }
 
-        //verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
+        verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
 
-        //stransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);//rotate vertical this way to only move camera
-        //player.transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);//this will rotate the entire player
-    }
+		transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);//rotate vertical this way to only move camera
+		player.transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);//this will rotate the entire player
+	}
 
     private void ToggleCursorMode()
     {

@@ -15,6 +15,10 @@ namespace GameServer
 
         private float moveSpeed = 5f / Constants.TICKS_PER_SEC;
         private bool[] inputs;
+        private float _inputDirection = 0f;
+        private float angleSpeed = 10f;
+
+        float _inputAngle = 0f;
 
         public Player(int _id, string _username, Vector3 _spawnPosition)
         {
@@ -29,10 +33,8 @@ namespace GameServer
         /// <summary>Processes player input and moves the player.</summary>
         public void Update()
         {
-            float speed = 1f;
-            float angleSpeed = 0.5f;
-            float _inputDirection = 0f;
-            float _inputAngle = 0f;
+            float speed = 0.1f;
+           
             if (inputs[0])//W
             {
                 _inputDirection += speed;
@@ -58,7 +60,7 @@ namespace GameServer
                 //add a force?
             }
 
-            Move(_inputDirection,_inputAngle);
+            Move(_inputDirection, _inputAngle);
            
         }
         /* 
