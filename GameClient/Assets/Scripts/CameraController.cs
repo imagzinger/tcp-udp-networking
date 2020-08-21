@@ -45,11 +45,11 @@ public class CameraController : MonoBehaviour
         
         if (Input.GetKey(KeyCode.A))
         {
-            horizontalRotation -= 1f;
+            horizontalRotation -= 2f;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            horizontalRotation += 1f;
+            horizontalRotation += 2f;
         }
 
         verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);

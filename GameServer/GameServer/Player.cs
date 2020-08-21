@@ -16,8 +16,8 @@ namespace GameServer
         private float moveSpeed = 5f / Constants.TICKS_PER_SEC;
         private bool[] inputs;
         private float _inputDirection = 0f;
-        private float angleSpeed = 10f;
-
+        private float angleSpeed = 120f;
+        private float speed = 1f;
         float _inputAngle = 0f;
 
         public Player(int _id, string _username, Vector3 _spawnPosition)
@@ -33,35 +33,35 @@ namespace GameServer
         /// <summary>Processes player input and moves the player.</summary>
         public void Update()
         {
-            float speed = 0.1f;
-           
             if (inputs[0])//W
             {
-                _inputDirection += speed;
-            }
-            if (inputs[1])//A
-            {
-                //rotate left
-                _inputAngle -= angleSpeed;
-            }
-            if (inputs[2])//S
-            {
-                _inputDirection -= speed;
-            }
-            if (inputs[3])//D
-            {
-                //rotate right
-                _inputAngle += angleSpeed;
-            }
+                speed += 1f;
 
-            if (inputs[4])//SPACE
-            {
-                //jump noises
-                //add a force?
+                if (inputs[3])//D
+                    _inputAngle += angleSpeed;
+                if (inputs[1])//A
+                    _inputAngle -= angleSpeed;
             }
+            else if (inputs[2])//S
+            {
+                speed -= 4f;
 
+                if (inputs[3])//D
+                    _inputAngle -= angleSpeed;
+                if (inputs[1])//A
+                    _inputAngle += angleSpeed;
+            }
+            else
+            {
+                if (speed > 0)
+                    speed -= 1f;
+                if (speed < 0)
+                    speed += 1f;
+            }
+            //_inputDirection /= 2;
+            _inputDirection = MathF.Atan(speed/100);
+            
             Move(_inputDirection, _inputAngle);
-           
         }
         /* 
            public void Update()
