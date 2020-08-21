@@ -5,16 +5,16 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public PlayerManager player;
-    public float sensitivity = 10000f;
+    public float sensitivity = 11f;
     public float clampAngle = 85f;
-
+    private float mouseHorizontalZero = Input.GetAxis("Mouse X");
     private float verticalRotation;
     private float horizontalRotation;
 
     private void Start()
     {
         //verticalRotation = transform.localEulerAngles.x;
-       // horizontalRotation = player.transform.eulerAngles.y;
+       horizontalRotation = player.transform.eulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -37,25 +37,30 @@ public class CameraController : MonoBehaviour
 
     private void Look()
     {
-		float _mouseVertical = -Input.GetAxis("Mouse Y");
-		float _mouseHorizontal = Input.GetAxis("Mouse X");
+        //float _mouseVertical = -Input.GetAxis("Mouse Y");
+        //float _mouseHorizontalZero = 0;
+        float joyStick = Input.GetAxis("Mouse X");
+        if(joyStick > mouseHorizontalZero)
+            horizontalRotation += .5f;
+        if (joyStick < mouseHorizontalZero)
+            horizontalRotation -= .5f;
 
-		verticalRotation += _mouseVertical * sensitivity * Time.deltaTime;
-		//horizontalRotation += _mouseHorizontal * sensitivity * Time.deltaTime;
-        
-        if (Input.GetKey(KeyCode.A))
-        {
-            horizontalRotation -= 2f;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            horizontalRotation += 2f;
-        }
+        //verticalRotation += _mouseVertical * sensitivity * Time.deltaTime;
+        //horizontalRotation += _mouseHorizontal * sensitivity * Time.deltaTime;
 
-        verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //	horizontalRotation -= 1f;
+        //}
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //	horizontalRotation += 1f;
+        //}
 
-		transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);//rotate vertical this way to only move camera
-		player.transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);//this will rotate the entire player
+        //verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
+
+        //transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);//rotate vertical this way to only move camera
+        player.transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);//this will rotate the entire player
 	}
 
     private void ToggleCursorMode()

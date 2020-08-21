@@ -17,7 +17,7 @@ namespace GameServer
         private bool[] inputs;
         private float _inputDirection = 0f;
         private float angleSpeed = 120f;
-        private float speed = 1f;
+        private float speed = 2f;
         float _inputAngle = 0f;
 
         public Player(int _id, string _username, Vector3 _spawnPosition)
@@ -37,19 +37,19 @@ namespace GameServer
             {
                 speed += 1f;
 
-                if (inputs[3])//D
-                    _inputAngle += angleSpeed;
-                if (inputs[1])//A
-                    _inputAngle -= angleSpeed;
+                //if (inputs[3])//D
+                //    _inputAngle += angleSpeed;
+                //if (inputs[1])//A
+                //    _inputAngle -= angleSpeed;
             }
             else if (inputs[2])//S
             {
                 speed -= 4f;
 
-                if (inputs[3])//D
-                    _inputAngle -= angleSpeed;
-                if (inputs[1])//A
-                    _inputAngle += angleSpeed;
+                //if (inputs[3])//D
+                //    _inputAngle -= angleSpeed;
+                //if (inputs[1])//A
+                //    _inputAngle += angleSpeed;
             }
             else
             {
@@ -99,29 +99,16 @@ namespace GameServer
         /// <param name="_inputDirection"></param>
         private void Move(float _inputDirection, float _inputAngle)
         {
-            
             Vector3 _forward = Vector3.Transform(new Vector3(0, 0, 1), rotation);
             Vector3 _right = Vector3.Normalize(Vector3.Cross(_forward, new Vector3(0, 1, 0)));
 
             Vector3 _moveDirection = _forward * _inputDirection;
          
             position += _moveDirection * moveSpeed;
-            rotation *= Quaternion.CreateFromAxisAngle(Vector3.UnitY, _inputAngle);
-            // I will need something like this line in order to allow the A and D keys to TURN the car
-            ///rotation += rotationAmount * rotation speed?
-            //quaternions are strange so look up how this works...need new Quaternion each time?
-            //float angle = rotateSpeed * Time.deltaTime;
-
+            rotation = Quaternion.CreateFromAxisAngle(Vector3.UnitZ, _inputAngle);
 
             ServerSend.PlayerPosition(this);
             ServerSend.PlayerRotation(this);
-            /*8/10/20
-             * player not rotating only moving in different direction when side arrow pushed
-             * need to make sure rotation in getting sent trought to client and player class is
-             * actually rotating in the server
-             * :)
-             
-             */ 
         }
 
         /*private void Move(Vector2 _inputDirection)
