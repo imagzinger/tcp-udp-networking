@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\ItemSpawner.cs" />
      <Compile Include="Assets\Scripts\Packet.cs" />
+     <Compile Include="Assets\Scripts\SpeedDisplay.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/risin/OneDrive/Documents/GitHub/tcp-udp-networking/GameClient/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

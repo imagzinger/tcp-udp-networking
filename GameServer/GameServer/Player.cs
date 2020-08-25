@@ -16,8 +16,13 @@ namespace GameServer
         private float moveSpeed = 5f / Constants.TICKS_PER_SEC;
         private bool[] inputs;
         private float _inputDirection = 0f;
-        private float angleSpeed = 120f;
-        private float speed = 2f;
+
+        private float maxSpeed = 2.5f;
+        private float revSpeed = -1f;
+        private float speed = 0f;
+        private float acceleration = .05f;
+        private float brake = .07f;
+        private float drag = .01f;
         float _inputAngle = 0f;
 
         public Player(int _id, string _username, Vector3 _spawnPosition)
@@ -29,72 +34,77 @@ namespace GameServer
 
             inputs = new bool[6];
         }
+        private void Drag()
+        {
+            if(speed > 0)
+                speed -= drag;
+            if (speed < 0)
+                speed += drag;
+        }
+        private void Forward()
+        {
+            if (speed < maxSpeed)
+            {
+				if (speed < 0)
+				{
+                    speed += brake;
+				}
+                speed += acceleration;
+            }
+
+			if (inputs[3] || inputs[1])
+			{
+                //slow down when turning
+	
+                speed -= acceleration;
+			}
+		}
+        private void Backward()
+        {
+            if (speed > revSpeed)
+            {
+                if (speed > 0)
+				{
+                    speed -= brake;
+                }
+                speed -= acceleration;
+            }
+            if (inputs[3] || inputs[1])
+            {
+                //if (speed > 5)
+                //{
+                //    speed -= acceleration;
+                //}slow on turns but this is already braking so maybe ignore it?
+            }
+        }
+        private void Coast()
+        {
+            //do nothing?
+        }
 
         /// <summary>Processes player input and moves the player.</summary>
         public void Update()
         {
-            if (inputs[0])//W
+            if (inputs[0])//w is go forwards
             {
-                speed += 1f;
+                Forward();
+            }
+            else if (inputs[2])//S is go backwards
+            {
+                Backward();
+            }
+            else// no input forward or backwards
+            {
+                Coast();
+            }
 
-                //if (inputs[3])//D
-                //    _inputAngle += angleSpeed;
-                //if (inputs[1])//A
-                //    _inputAngle -= angleSpeed;
-            }
-            else if (inputs[2])//S
-            {
-                speed -= 4f;
+            Drag();
 
-                //if (inputs[3])//D
-                //    _inputAngle -= angleSpeed;
-                //if (inputs[1])//A
-                //    _inputAngle += angleSpeed;
-            }
-            else
-            {
-                if (speed > 0)
-                    speed -= 1f;
-                if (speed < 0)
-                    speed += 1f;
-            }
-            //_inputDirection /= 2;
-            _inputDirection = MathF.Atan(speed/100);
+            _inputDirection = speed;
             
             Move(_inputDirection, _inputAngle);
         }
-        /* 
-           public void Update()
-           {
-           Vector2 _inputDirection = Vector2.Zero;
-           if (inputs[0])//W
-           {
-               _inputDirection.Y += 1;
-           }
-           if (inputs[1])//A
-           {
-               //rotate left
-               _inputDirection.X += 1;
-           }
-           if (inputs[2])//S
-           {
-               _inputDirection.Y -= 1;
-           }
-           if (inputs[3])//D
-           {
-               //rotate right
-               _inputDirection.X -= 1;
-           }
-
-           if (inputs[4])//SPACE
-           { 
-               //jump noises
-               //add a force?
-           }
-
-           Move(_inputDirection);
-           }
-           */
+        
         /// <summary>Calculates the player's desired movement direction and moves him.</summary>
         /// <param name="_inputDirection"></param>
         private void Move(float _inputDirection, float _inputAngle)
