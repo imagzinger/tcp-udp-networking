@@ -12,7 +12,7 @@ public class SpeedDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed.text = "0";
+        //speed.text = "0";
         car = GameObject.FindGameObjectWithTag("car");
         carX1 = car.transform.position.x;
         carY1 = car.transform.position.z;
@@ -27,7 +27,7 @@ public class SpeedDisplay : MonoBehaviour
         velocity = Distance() / Time.deltaTime;
         carX1 = carX2;
         carY1 = carY2;
-        speed.text = velocity.ToString();
+        speed.text = ((int) velocity).ToString();
     }
 
     private float Distance()
