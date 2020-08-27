@@ -6,14 +6,16 @@ using UnityEngine.UI;
 public class SpeedDisplay : MonoBehaviour
 {
     public Text speed;
+    private int index = 0;
     public float velocity;
+    //public float[] velocity = { 0f, 0f, 0f};
+    //public float avgVelocity;
     private float carX1, carX2, carY1, carY2;
     [SerializeField] GameObject car;
     // Start is called before the first frame update
     void Start()
     {
-        //speed.text = "0";
-        car = GameObject.FindGameObjectWithTag("car");
+        speed.text = "0";
         carX1 = car.transform.position.x;
         carY1 = car.transform.position.z;
     }
@@ -24,10 +26,16 @@ public class SpeedDisplay : MonoBehaviour
         car = GameObject.FindGameObjectWithTag("car");
         carX2 = car.transform.position.x;
         carY2 = car.transform.position.z;
+        
+        if (index == 3)
+            index = 0;
+        //velocity
         velocity = Distance() / Time.deltaTime;
+        //avgVelocity = (velocity[0] + velocity[1] + velocity[2])/3;
         carX1 = carX2;
         carY1 = carY2;
-        speed.text = ((int) velocity).ToString();
+        speed.text = ((int) (7 * velocity)).ToString();
+        index++;
     }
 
     private float Distance()

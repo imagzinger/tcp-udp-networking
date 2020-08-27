@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
 
     public float sensitivity = 11f;
     public float clampAngle = 85f;
-    private float mouseHorizontalZero = Input.GetAxis("Mouse X");
+    private float mouseHorizontalZero;
     private float verticalRotation;
     private float horizontalRotation;
     private float cameraRotationH;
@@ -21,10 +21,7 @@ public class CameraController : MonoBehaviour
         //verticalRotation = transform.localEulerAngles.x;
         horizontalRotation = player.transform.eulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
-        
     }
-
-   
 
     private void Update()
     {
@@ -38,15 +35,15 @@ public class CameraController : MonoBehaviour
             
             Look();
         }
-        Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
+        //Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
         
     }
 
     private void Look()
     {
-        float _mouseVertical = -Input.GetAxis("Mouse Y");
-        float _mouseHorizontal = Input.GetAxis("Mouse X");
-        float m_FieldOfView = Input.GetAxis("Mouse ScrollWheel");
+        float _mouseVertical = -Input.GetAxisRaw("Mouse Y");
+        float _mouseHorizontal = Input.GetAxisRaw("Mouse X");
+        float m_FieldOfView = Input.GetAxisRaw("Mouse ScrollWheel");
         //Camera.FieldOfView
         gameObject.GetComponent<Camera>().fieldOfView -= m_FieldOfView* sensitivity;
         cameraRotationV += _mouseVertical * sensitivity * Time.deltaTime;
