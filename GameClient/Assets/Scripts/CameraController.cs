@@ -49,7 +49,15 @@ public class CameraController : MonoBehaviour
         cameraRotationV += _mouseVertical * sensitivity * Time.deltaTime;
         cameraRotationH += _mouseHorizontal * sensitivity * Time.deltaTime;
 
-		if (Input.GetKey(KeyCode.A))
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    horizontalRotation -= (100f * Time.deltaTime);
+        //}
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    horizontalRotation += (100f * Time.deltaTime);
+        //}
+        if (Input.GetKey(KeyCode.A))
 		{
 			horizontalRotation -= (100f * Time.deltaTime);
 		}

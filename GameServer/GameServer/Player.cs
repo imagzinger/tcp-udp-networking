@@ -17,7 +17,7 @@ namespace GameServer
         private bool[] inputs;
         private float _inputDirection = 0f;
 
-        private float maxSpeed = 2.5f;
+        private float maxSpeed = 3.0f;
         private float revSpeed = -1f;
         private float speed = 0f;
         private float acceleration = .05f;
@@ -37,26 +37,26 @@ namespace GameServer
         private void Drag()
         {
             if(speed > 0)
-                speed -= drag;
+                speed -= (drag*speed*speed/2);
             if (speed < 0)
-                speed += drag;
+                speed += (drag*speed/5f*7f);
         }
         private void Forward()
         {
-            if (speed < maxSpeed)
-            {
+            //if (speed < maxSpeed)
+            //{
 				if (speed < 0)
 				{
                     speed += brake;
 				}
                 speed += acceleration;
-            }
+           // }
 
 			if (inputs[3] || inputs[1])
 			{
                 //slow down when turning
 	
-                speed -= acceleration;
+                speed -= speed * .02f;
 			}
 		}
         private void Backward()
